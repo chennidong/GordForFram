@@ -131,7 +131,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -139,14 +138,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -218,7 +209,7 @@ GameObject:
   - component: {fileID: 661474379}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: UiRoot
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -378,7 +369,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1507178068}
   - component: {fileID: 1507178067}
-  - component: {fileID: 1507178066}
   m_Layer: 5
   m_Name: UICamera
   m_TagString: Untagged
@@ -386,14 +376,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &1507178066
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1507178065}
-  m_Enabled: 1
 --- !u!20 &1507178067
 Camera:
   m_ObjectHideFlags: 0
@@ -464,7 +446,7 @@ GameObject:
   - component: {fileID: 1514982015}
   - component: {fileID: 1514982016}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -496,3 +478,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa9df2eaaf4464e9df602834bd9dc25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  UiRoot: {fileID: 0}
