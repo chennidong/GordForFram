@@ -24,6 +24,10 @@ public class GameManager : MonoBehaviour
         //切场景不销毁
         DontDestroyOnLoad(this);
         UiRoot = GameObject.FindWithTag("UiRoot").transform;
+    }
+
+    private void OnEnable()
+    {
         Init();
     }
 
@@ -40,12 +44,15 @@ public class GameManager : MonoBehaviour
         //加载登录界面
         LoadLoginUi();
     }
-
+    /// <summary>
+    /// 登录界面
+    /// </summary>
     private void LoadLoginUi()
     {
-        ResourceRequest request = Resources.LoadAsync<GameObject>("Ui/LoginUi");
-        GameObject LoginObj =  request.asset as GameObject;
-        GameObject uiObj = Instantiate(LoginObj, UiRoot, false);
-        uiObj.AddComponent<LoginUi>();
+        XResourcesManager.instance.LoadAsync<GameObject>("Ui/LoginUi", (obj) =>
+        {
+            GameObject uiObj = Instantiate(obj as GameObject, UiRoot, false);
+            uiObj.AddComponent<LoginUi>();
+        });
     }
 }
