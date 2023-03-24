@@ -18,10 +18,8 @@ class XResourcesManager : MonoBehaviour
                 GameObject obj = new GameObject("ResourcesManager");
                 DontDestroyOnLoad(obj);
                 _resources = obj.AddComponent<XResourcesManager>();
-                return _resources;
             }
-
-            return null;
+            return _resources;
         }
     }
 

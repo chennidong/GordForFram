@@ -26,8 +26,12 @@ public class LoginUi : MonoBehaviour
         //按钮事件
         _uiDic.GetModule<Button>("StartBtn").onClick.AddListener(() =>
         {
-            Debug.Log("游戏开始,进入加载界面");
-            Destroy(gameObject);
+            XResourcesManager.instance.LoadAsync<GameObject>("Ui/MainUi", (obj) =>
+            {
+                GameObject uiObj = Instantiate(obj as GameObject, GameConstant.UiRoot, false);
+                uiObj.AddComponent<MainUi>();
+                Destroy(gameObject);
+            });
         });
 
         _uiDic.GetModule<Button>("QuitBtn").onClick.AddListener(() =>

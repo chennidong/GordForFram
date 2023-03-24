@@ -16,14 +16,12 @@ using UnityEngine;
 /// </summary>
 public class GameManager : MonoBehaviour
 {
-    [NonSerialized]
-    public Transform UiRoot;
-    
+
     private void Awake()
     {
         //切场景不销毁
         DontDestroyOnLoad(this);
-        UiRoot = GameObject.FindWithTag("UiRoot").transform;
+        GameConstant.UiRoot = GameObject.FindWithTag("UiRoot").transform;
     }
 
     private void OnEnable()
@@ -51,7 +49,7 @@ public class GameManager : MonoBehaviour
     {
         XResourcesManager.instance.LoadAsync<GameObject>("Ui/LoginUi", (obj) =>
         {
-            GameObject uiObj = Instantiate(obj as GameObject, UiRoot, false);
+            GameObject uiObj = Instantiate(obj as GameObject, GameConstant.UiRoot, false);
             uiObj.AddComponent<LoginUi>();
         });
     }
