@@ -12,29 +12,21 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class LoginUi : MonoBehaviour
+public class LoginUi : BasePanel
 {
-    private UiModule _uiDic;
-
-    private void OnEnable()
+    protected override void Awake()
     {
-        _uiDic = GetComponent<UiModule>();
+        base.Awake();
+        ui_layer = LayerUi.win;
     }
 
     private void Start()
     {
-        //按钮事件
-        _uiDic.GetModule<Button>("StartBtn").onClick.AddListener(() =>
+        ButtinEvent("Btn_Start",() =>
         {
-            XResourcesManager.instance.LoadAsync<GameObject>("Ui/MainUi", (obj) =>
-            {
-                GameObject uiObj = Instantiate(obj as GameObject, GameConstant.UiRoot, false);
-                uiObj.AddComponent<MainUi>();
-                Destroy(gameObject);
-            });
+            UIManager.instance.ShowUi<MainUi>();
         });
-
-        _uiDic.GetModule<Button>("QuitBtn").onClick.AddListener(() =>
+        ButtinEvent("Btn_Quit", () =>
         {
 #if UNITY_EDITOR
             UnityEditor.EditorApplication.isPlaying = false;
@@ -43,7 +35,7 @@ public class LoginUi : MonoBehaviour
 #endif
         });
         
-        _uiDic.GetModule<Button>("SetBtn").onClick.AddListener(() =>
+        ButtinEvent("Btn_Set", () =>
         {
             Debug.Log("打开设置面板");
         });

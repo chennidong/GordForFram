@@ -10,6 +10,7 @@
 
 using System;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 /// <summary>
 /// 游戏整体流程的总控制
@@ -47,10 +48,6 @@ public class GameManager : MonoBehaviour
     /// </summary>
     private void LoadLoginUi()
     {
-        XResourcesManager.instance.LoadAsync<GameObject>("Ui/LoginUi", (obj) =>
-        {
-            GameObject uiObj = Instantiate(obj as GameObject, GameConstant.UiRoot, false);
-            uiObj.AddComponent<LoginUi>();
-        });
+        UIManager.instance.ShowUi<LoginUi>();
     }
 }

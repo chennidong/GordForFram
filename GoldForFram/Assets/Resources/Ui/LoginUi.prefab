@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 618908055}
   - component: {fileID: 618908054}
   m_Layer: 5
-  m_Name: StartBtn
+  m_Name: Btn_Start
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,7 +288,7 @@ GameObject:
   - component: {fileID: 723555634}
   - component: {fileID: 723555633}
   m_Layer: 5
-  m_Name: QuitBtn
+  m_Name: Btn_Quit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -407,7 +407,7 @@ GameObject:
   - component: {fileID: 917328698}
   - component: {fileID: 917328697}
   m_Layer: 5
-  m_Name: SetBtn
+  m_Name: Btn_Set
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -842,7 +842,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 386647918, guid: aef64d17da8646844892625c19a41e42, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: aef64d17da8646844892625c19a41e42, type: 3}
 --- !u!224 &5645143811288747309 stripped
 RectTransform:

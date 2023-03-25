@@ -17,4 +17,6 @@ using UnityEngine;
 public static class GameConstant
 {
     public static Transform UiRoot;
+
+    public static string UI_PATH = "Ui/";
 }

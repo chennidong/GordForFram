@@ -12,39 +12,36 @@ using System;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MainUi : MonoBehaviour
+public class MainUi : BasePanel
 {
-    private UiModule _uiDic;
     private int day = 1;
     private int money = 999;
-    private void OnEnable()
+
+    protected override void Awake()
     {
-        _uiDic = GetComponent<UiModule>();
+        base.Awake();
+        ui_layer = LayerUi.main;
     }
 
     private void Start()
     {
-        _uiDic.GetModule<Button>("FarmBtn").onClick.AddListener(() =>
+        _uiDic.GetModule<Button>("Btn_Farm").onClick.AddListener(() =>
         {
             Debug.Log("打开农场");
         });
-        _uiDic.GetModule<Button>("MineBtn").onClick.AddListener(() =>
+        _uiDic.GetModule<Button>("Btn_Mine").onClick.AddListener(() =>
         {
             Debug.Log("打开矿场");
         });
-        _uiDic.GetModule<Button>("CloseBtn").onClick.AddListener(() =>
+        _uiDic.GetModule<Button>("Btn_Close").onClick.AddListener(() =>
         {
             //退出
-#if UNITY_EDITOR
-            UnityEditor.EditorApplication.isPlaying = false;
-#else
-            Application.Quit();
-#endif
+            CloseSelf();
         });
         
         //显示天数
-        _uiDic.GetModule<Text>("DayText").text = $"天数:{day}";
+        _uiDic.GetModule<Text>("Txt_Day").text = $"天数:{day}";
         //显示金币
-        _uiDic.GetModule<Text>("GoldText").text = $"$: {money}";
+        _uiDic.GetModule<Text>("Txt_Gold").text = $"$: {money}";
     }
 }

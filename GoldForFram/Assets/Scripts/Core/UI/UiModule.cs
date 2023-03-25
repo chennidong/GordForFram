@@ -16,24 +16,15 @@ using Object = UnityEngine.Object;
 /// <summary>
 /// 要控制的ui组件对象从这获取
 /// </summary>
-public class UiModule : MonoBehaviour
+public class UiModule
 {
-    [SerializeField]
-    private List<SubModule> module = new List<SubModule>();
-
     private Dictionary<string, Object> _uiDic = new Dictionary<string, Object>();
 
-    private void Awake()
+    public void AddObj(Object obj)
     {
-        foreach (var item in module)
-        {
-            if (!string.IsNullOrEmpty(item.Name) && !_uiDic.ContainsKey(item.Name))
-            {
-                _uiDic.Add(item.Name,item.Obj);
-            }
-        }
+        _uiDic.Add(obj.name,obj);
     }
-  
+
     /// <summary>
     /// 根据名字获取对应的组件对象
     /// </summary>
@@ -48,6 +39,15 @@ public class UiModule : MonoBehaviour
         }
         Debug.Log($"没有 {name} 这名字的组件对象");
         return null;
+    }
+    /// <summary>
+    /// 检查是否存储
+    /// </summary>
+    /// <param name="key"></param>
+    /// <returns></returns>
+    public bool CheckKey(string key)
+    {
+        return _uiDic.ContainsKey(key);
     }
     
 }
