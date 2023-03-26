@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.U2D;
 using Object = UnityEngine.Object;
 
 class XResourcesManager : MonoBehaviour
@@ -63,5 +64,23 @@ class XResourcesManager : MonoBehaviour
         Debug.Log(_request.progress);
         yield return _request;
         action(_request.asset as T);
+    }
+    /// <summary>
+    /// 加载图片
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    public Texture LoadTexture(string path)
+    {
+        return Load<Texture>(path);
+    }
+    /// <summary>
+    /// 加载图集
+    /// </summary>
+    /// <param name="path"></param>
+    /// <returns></returns>
+    public SpriteAtlas LoadSpriteAtlas(string path)
+    {
+        return Load<SpriteAtlas>(path);
     }
 }

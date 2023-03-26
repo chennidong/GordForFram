@@ -12,6 +12,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.EventSystems;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
@@ -39,7 +40,7 @@ public class BasePanel : MonoBehaviour
             {
                 _uiDic.AddObj(item);
             }
-            else if (type == "img" && item.GetType() == typeof(Image))
+            else if (type == "img" && (item.GetType() == typeof(Image) || item.GetType() == typeof(RawImage)))
             {
                 _uiDic.AddObj(item);
             }
@@ -106,7 +107,7 @@ public class BasePanel : MonoBehaviour
     {
         UIManager.instance.ColseUi(this.name,true);
     }
-
+    
     /// <summary>
     /// 隐藏时触发
     /// </summary>

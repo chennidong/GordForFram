@@ -1,4 +1,6 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 /// <summary>
@@ -35,6 +37,8 @@ public class SetUi : BasePanel
             _volume.text = $"音量: {curVolume}";
         });
         ButtinEvent("btn_Bg", () => { CloseSelf(); });
+
+        _uiDic.SetTexture("Img_bg", "Texture/box/box_select2");
     }
 
     protected override void OnDestroy()

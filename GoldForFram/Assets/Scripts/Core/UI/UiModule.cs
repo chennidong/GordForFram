@@ -11,6 +11,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.U2D;
+using UnityEngine.UI;
 using Object = UnityEngine.Object;
 
 /// <summary>
@@ -40,6 +42,65 @@ public class UiModule
         Debug.Log($"没有 {name} 这名字的组件对象");
         return null;
     }
+    
+     /// <summary>
+     /// 设置图片
+     /// </summary>
+     /// <param name="img"></param>
+     /// <param name="path"></param>
+     public void SetImage(string name, string path)
+     {
+            Image img = GetModule<Image>(name);
+            if (img == null)
+            {
+                Debug.LogError($"这 {img.name} 为空");
+            }
+            int index = path.LastIndexOf('/');
+            string imgName = path.Substring(index+1);
+            string atlasPath = path.Remove(index);
+            SpriteAtlas _atlas = XResourcesManager.instance.LoadSpriteAtlas(atlasPath);
+            if (_atlas!=null)
+            {
+                Sprite _sprite = _atlas.GetSprite(imgName);
+                if (_sprite!= null)
+                {
+                    img.sprite = _sprite; 
+                }
+                else
+                {
+                    Debug.LogError($"这 {path} 路径下没有图片");
+                }
+            }
+            else
+            {
+                Debug.LogError($"这 {atlasPath} 路径下没有图集");
+            }
+        }
+        
+        /// <summary>
+        /// 设置图片
+        /// </summary>
+        /// <param name="img"></param>
+        /// <param name="path"></param>
+        public void SetTexture(string name, string path)
+        {
+            RawImage img = GetModule<RawImage>(name);
+            if (img == null)
+            {
+                Debug.LogError($"这 {img.name} 为空");
+            }
+    
+            Texture _texture = XResourcesManager.instance.LoadTexture(path);
+            if (_texture != null)
+            {
+                img.texture = _texture;
+            }
+            else
+            {
+                Debug.LogError($"这 {path} 路径下没有图片");
+            }
+        }
+    
     /// <summary>
     /// 检查是否存储
     /// </summary>
