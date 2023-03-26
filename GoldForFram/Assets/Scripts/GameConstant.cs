@@ -19,4 +19,6 @@ public static class GameConstant
     public static Transform UiRoot;
 
     public static string UI_PATH = "Ui/";
+
+    public static string VOLUME_KEY = "VOLUME_KEY";
 }

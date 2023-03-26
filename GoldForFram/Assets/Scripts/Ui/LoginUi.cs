@@ -37,7 +37,7 @@ public class LoginUi : BasePanel
         
         ButtinEvent("Btn_Set", () =>
         {
-            Debug.Log("打开设置面板");
+            UIManager.instance.ShowUi<SetUi>();
         });
     }
 }

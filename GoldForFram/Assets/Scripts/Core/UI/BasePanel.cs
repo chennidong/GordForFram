@@ -47,6 +47,10 @@ public class BasePanel : MonoBehaviour
             {
                 _uiDic.AddObj(item);
             }
+            else if (type == "slider" && item.GetType() == typeof(Slider))
+            {
+                _uiDic.AddObj(item);
+            }
         }
     }
 
@@ -65,7 +69,7 @@ public class BasePanel : MonoBehaviour
     /// <summary>
     /// 显示完成
     /// </summary>
-    public void Showed()
+    public virtual void Showed()
     {
     }
 
@@ -100,7 +104,7 @@ public class BasePanel : MonoBehaviour
     /// </summary>
     public void CloseSelf()
     {
-        UIManager.instance.ColseUi(this.name);
+        UIManager.instance.ColseUi(this.name,true);
     }
 
     /// <summary>

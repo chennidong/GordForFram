@@ -478,4 +478,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eaa9df2eaaf4464e9df602834bd9dc25, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  UiRoot: {fileID: 0}

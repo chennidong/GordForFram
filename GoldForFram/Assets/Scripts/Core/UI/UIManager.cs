@@ -78,6 +78,10 @@ public class UIManager
                     else if (item.Value.ui_layer == LayerUi.main)
                     {
                         HideUi(item.Key);
+                    }else if (item.Value.ui_layer == LayerUi.pop)
+                    {
+                        ColseUi(item.Key);
+                        tempRemove.Add(item.Key);
                     }
                 }
                 break;
@@ -91,9 +95,14 @@ public class UIManager
                     else if (item.Value.ui_layer == LayerUi.win)
                     {
                         ColseUi(item.Key);
+                        tempRemove.Add(item.Key);
+                    }
+                    else if (item.Value.ui_layer == LayerUi.pop)
+                    {
+                        ColseUi(item.Key);
+                        tempRemove.Add(item.Key);
                     }
                 }
-
                 break;
         }
         
@@ -124,9 +133,9 @@ public class UIManager
                 {
                     item.gameObject.SetActive(true);
                 }
-                ui_hide_list.Clear();
                 break;
         }
+        ui_hide_list.Clear();
     }
 
     /// <summary>
@@ -194,13 +203,17 @@ public class UIManager
     /// 关闭ui
     /// </summary>
     /// <param name="name"></param>
-    public void ColseUi(string name)
+    public void ColseUi(string name,bool isRemove = false)
     {
         name = name.Replace("(Clone)", "");
         if (ui_show_list.ContainsKey(name))
         {
             CheckCloseUiLayer(ui_show_list[name]);
             GameObject.Destroy(ui_show_list[name].gameObject);
+            if (isRemove)
+            {
+                ui_show_list.Remove(name);
+            }
         }
     }
 }
